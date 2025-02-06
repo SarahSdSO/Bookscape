@@ -1,0 +1,41 @@
+{
+  "question": 
+  [
+    "Q1. Quem é o autor de 'Dom Casmurro'?",
+    "Q2. Qual dessas obras foi escrita por J.R.R. Tolkien?",
+    "Q3. Qual é o primeiro livro da série 'Harry Potter'?",
+    "Q4. Em que cidade se passa a maior parte da história de 'O Primo Basílio'?",
+    "Q5. Qual dessas personagens pertence ao livro 'Orgulho e Preconceito'?",
+    "Q6. Quem escreveu 'Cem Anos de Solidão'?",
+    "Q7. Qual é o nome do detetive famoso criado por Arthur Conan Doyle?",
+    "Q8. Qual dessas obras pertence ao escritor brasileiro Jorge Amado?",
+    "Q9. Em 'O Pequeno Príncipe', qual é a profissão do narrador da história?",
+    "Q10. Qual dessas distopias foi escrita por George Orwell?"
+  ],
+  "answer": 
+  [
+    1,
+    3,
+    2,
+    4,
+    2,
+    3,
+    1,
+    4,
+    2,
+    3
+  ],
+  "options": 
+  [
+    ["Machado de Assis", "José de Alencar", "Graciliano Ramos", "Lima Barreto"],
+    ["O Pequeno Príncipe", "1984", "O Senhor dos Anéis", "Drácula"],
+    ["Harry Potter e a Câmara Secreta", "Harry Potter e a Pedra Filosofal", "Harry Potter e o Prisioneiro de Azkaban", "Harry Potter e o Cálice de Fogo"],
+    ["São Paulo", "Belo Horizonte", "Porto Alegre", "Lisboa"],
+    ["Humbert Humbert", "Elizabeth Bennet", "Capitão Ahab", "Anna Kariênina"],
+    ["José Saramago", "Clarice Lispector", "Gabriel García Márquez", "Fernando Pessoa"],
+    ["Sherlock Holmes", "Hercule Poirot", "Philip Marlowe", "Comissário Maigret"],
+    ["O Guarani", "Memórias Póstumas de Brás Cubas", "Senhora", "Capitães da Areia"],
+    ["Médico", "Aviador", "Professor", "Jornalista"],
+    ["Admirável Mundo Novo", "Fahrenheit 451", "1984", "Laranja Mecânica"]
+  ]
+}
