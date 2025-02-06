@@ -9,7 +9,6 @@ class CrosswordsState(GameState):
         self.lives = game.current_state.lives
 
     def enter(self):
-        # Fecha a janela do Tkinter antes de iniciar o Pygame
         self.game.root.destroy()
         self.run_crosswords()
 

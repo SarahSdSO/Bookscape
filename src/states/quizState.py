@@ -24,10 +24,8 @@ class QuizState(GameState):
         self.game.root.title("Bookscape Quiz")
         self.game.root.geometry("800x450")
 
-        # Limpa widgets anteriores, se houver
         self.exit()
 
-        # Cria novos widgets
         self.title_label = Label(self.game.root, text="Bookscape Quiz", width=50, bg="green", fg="white", font=("ariel", 20, "bold"))
         self.title_label.place(x=0, y=2)
         self.widgets.append(self.title_label)
