@@ -8,7 +8,8 @@ WORDLE:
 - 
 
 JOGO DA VELHA:
-- 
+- https://inventwithpython.com/chapter10.html
+- https://www.geeksforgeeks.org/finding-optimal-move-in-tic-tac-toe-using-minimax-algorithm-in-game-theory/
 
 FORCA:
 - 

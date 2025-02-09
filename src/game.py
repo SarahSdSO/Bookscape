@@ -16,6 +16,9 @@ class Game:
         self.heart_image = pygame.transform.scale(self.heart_image, (50, 30))
         self.lives = 3
         self.running = True
+
+        self.icon = pygame.image.load("assets/icons/gameIcon.png")
+        pygame.display.set_icon(self.icon)
         
         self.state = MenuState(self)
 
