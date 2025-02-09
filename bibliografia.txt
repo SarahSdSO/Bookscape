@@ -1,0 +1,18 @@
+QUIZ:
+- https://www.geeksforgeeks.org/python-mcq-quiz-game-using-tkinter
+
+CAÇA-PALAVRAS
+- 
+
+WORDLE:
+- 
+
+JOGO DA VELHA:
+- 
+
+FORCA:
+- 
+
+BIBLIOTECAS NO GERAL:
+- 
+- 

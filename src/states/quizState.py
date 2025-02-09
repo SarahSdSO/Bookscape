@@ -1,126 +1,99 @@
+import pygame
 import json
-from tkinter import Label, Button, Radiobutton, IntVar, DISABLED, NORMAL
-from gameState import GameState
+from states.state import State
+from states.crosswordsState import CrosswordsState
+from states.gameOverState import GameOverState
 
-class QuizState(GameState):
+class QuizState(State):
     def __init__(self, game):
         super().__init__(game)
-        self.lives = 3
-        self.correct = 0
-        self.q_no = 0
-        self.time_left = 60
-        self.timer_running = False
+        self.WIDTH = 1000
+        self.HEIGHT = 600
+        self.background = pygame.image.load("assets/backgrounds/background.png")
+        self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
 
-        with open('data.json', encoding="utf-8") as f:
-            data = json.load(f)
+        self.font = pygame.font.Font("assets/fonts/Poppins-Regular.ttf", 25)
+        self.load_questions()
+        self.current_question = 0
+        self.time_left = 40 * self.game.FPS
 
-        self.questions = data['question']
-        self.options = data['options']
-        self.answers = data['answer']
+    def load_questions(self):
+        with open("data.json", "r", encoding="utf-8") as file:
+            data = json.load(file)
+            self.questions = data["question"]
+            self.answers = data["answer"]
+            self.options = data["options"]
 
-        self.opt_selected = IntVar()
+    def handle_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.game.running = False
 
-    def enter(self):
-        self.game.root.title("Bookscape Quiz")
-        self.game.root.geometry("800x450")
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                self.check_answer(event.pos)
 
-        self.exit()
+    def check_answer(self, mouse_pos):
+        button_radius = 30  # Mantemos o raio maior para melhorar a detecção
+        spacing = 85  # Ajustamos o espaçamento para corresponder ao desenho
 
-        self.title_label = Label(self.game.root, text="Bookscape Quiz", width=50, bg="green", fg="white", font=("ariel", 20, "bold"))
-        self.title_label.place(x=0, y=2)
-        self.widgets.append(self.title_label)
+        for i in range(len(self.options[self.current_question])):
+            y_position = 250 + i * spacing  # Define a posição do botão
+            button_center = (100, y_position)
 
-        self.question_label = Label(self.game.root, text="", width=60, font=("ariel", 16, "bold"), anchor="w")
-        self.question_label.place(x=70, y=100)
-        self.widgets.append(self.question_label)
+            distance = ((mouse_pos[0] - button_center[0])**2 + (mouse_pos[1] - button_center[1])**2) ** 0.5
+            if distance <= button_radius:
+                if i == self.answers[self.current_question] - 1:
+                    self.current_question += 1
+                    self.time_left = 40 * self.game.FPS
+                    if self.current_question == len(self.questions):
+                        self.game.change_state(CrosswordsState(self.game))
+                else:
+                    self.game.lives -= 1
+                    if self.game.lives == 0:
+                        self.game.change_state(GameOverState(self.game))
+                return  # Sai da função assim que um botão for detectado corretamente
 
-        self.opts = self.create_radio_buttons()
-        self.next_button = Button(self.game.root, text="Next", command=self.next_btn, width=10, bg="blue", fg="white", font=("ariel", 16, "bold"), state=DISABLED)
-        self.next_button.place(x=350, y=380)
-        self.widgets.append(self.next_button)
-
-        self.quit_button = Button(self.game.root, text="Quit", command=self.game.root.destroy, width=5, bg="black", fg="white", font=("ariel", 16, "bold"))
-        self.quit_button.place(x=700, y=50)
-        self.widgets.append(self.quit_button)
-
-        self.timer_label = Label(self.game.root, text=f"Tempo: {self.time_left}s", font=("ariel", 14, "bold"))
-        self.timer_label.place(x=350, y=50)
-        self.widgets.append(self.timer_label)
-
-        self.lives_label = Label(self.game.root, text="❤️❤️❤️", font=("ariel", 16, "bold"), fg="red")
-        self.lives_label.place(x=50, y=50)
-        self.widgets.append(self.lives_label)
-
-        self.display_question()
-        self.start_timer()
-
-    def create_radio_buttons(self):
-        q_list = []
-        y_pos = 150
-        for i in range(4):
-            radio_btn = Radiobutton(self.game.root, text="", variable=self.opt_selected, value=i+1, font=("ariel", 14), command=self.enable_next_button)
-            radio_btn.place(x=100, y=y_pos)
-            q_list.append(radio_btn)
-            self.widgets.append(radio_btn)
-            y_pos += 40
-        return q_list
-
-    def display_question(self):
-        self.question_label.config(text=self.questions[self.q_no])
-        self.opt_selected.set(0)
-        for i, option in enumerate(self.options[self.q_no]):
-            self.opts[i].config(text=option)
-        self.next_button.config(state=DISABLED)
-        self.time_left = 60
-        self.start_timer()
-
-    def enable_next_button(self):
-        self.next_button.config(state=NORMAL)
-
-    def check_answer(self):
-        return self.opt_selected.get() == self.answers[self.q_no]
-
-    def next_btn(self):
-        if self.check_answer():
-            self.correct += 1
-        else:
-            self.lose_life()
-
-        self.q_no += 1
-        if self.q_no == len(self.questions) or self.lives == 0:
-            self.display_result()
-        else:
-            self.display_question()
-
-    def lose_life(self):
-        self.lives -= 1
-        self.update_lives()
-        if self.lives == 0:
-            self.display_result()
-
-    def update_lives(self):
-        self.lives_label.config(text="❤️" * self.lives + "♡" * (3 - self.lives))
-
-    def start_timer(self):
-        if self.timer_running:
-            return
-        self.timer_running = True
-        self.countdown()
-
-    def countdown(self):
+    def update(self):
         if self.time_left > 0:
             self.time_left -= 1
-            self.timer_label.config(text=f"Tempo: {self.time_left}s")
-            self.game.root.after(1000, self.countdown)
         else:
-            self.timer_running = False
-            self.lose_life()
-            self.next_btn()
+            self.game.lives -= 1
 
-    def display_result(self):
-        if self.lives > 0:
-            from crosswordsState import CrosswordsState 
-            self.game.change_state(CrosswordsState(self.game))
-        else:
-            from gameOverState import GameOverState 
-            self.game.change_state(GameOverState(self.game))
+            if self.game.lives == 0:
+                self.game.change_state(GameOverState(self.game))
+            self.time_left = 40 * self.game.FPS
+    
+    def draw_background(self):
+        self.game.screen.blit(self.background, (0, 0))
+
+    def draw_question(self):
+        question_text = self.font.render(self.questions[self.current_question], True, (255, 255, 255))
+        self.game.screen.blit(question_text, (self.game.WIDTH // 2 - question_text.get_width() // 2, 50))
+
+    def draw_timer(self):
+        progress = self.time_left / (40 * self.game.FPS)
+        pygame.draw.rect(self.game.screen, (115, 42, 39), (self.game.WIDTH // 2 - 300, 120, 600, 20), border_radius=10)
+        pygame.draw.rect(self.game.screen, (87, 31, 28), (self.game.WIDTH // 2 - 300, 120, int(600 * progress), 20), border_radius=10)
+
+    def draw_lives(self):
+        for i in range(self.game.lives):
+            self.game.screen.blit(self.game.heart_image, (self.game.WIDTH - (i + 1) * 60 - 10, 20))
+
+    def draw_options(self):
+        button_radius = 22
+        spacing = 85
+
+        for i, option in enumerate(self.options[self.current_question]):
+            y_position = 250 + i * spacing
+            pygame.draw.circle(self.game.screen, (255, 255, 255), (100, y_position), button_radius, 2)
+            option_text = self.font.render(option, True, (255, 255, 255))
+            self.game.screen.blit(option_text, (140, y_position - option_text.get_height() // 2))
+
+    def draw(self):
+        self.game.screen.fill((50, 30, 30))
+        self.draw_background()
+        self.draw_question()
+        self.draw_timer()
+        self.draw_lives()
+        self.draw_options()
+        pygame.display.flip()

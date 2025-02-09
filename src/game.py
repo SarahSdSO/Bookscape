@@ -1,21 +1,31 @@
-from tkinter import Tk
+import pygame
+from states.menuState import MenuState
 
 class Game:
     def __init__(self):
-        self.root = Tk()
-        self.current_state = None
+        pygame.init()
+        self.WIDTH = 1000
+        self.HEIGHT = 600
+        self.FPS = 60
+
+        self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+        pygame.display.set_caption("Bookscape")
+        self.clock = pygame.time.Clock()
+       
+        self.heart_image = pygame.image.load("assets/backgrounds/heart.png")
+        self.heart_image = pygame.transform.scale(self.heart_image, (50, 30))
+        self.lives = 3
+        self.running = True
+        
+        self.state = MenuState(self)
 
     def change_state(self, new_state):
-        if self.current_state:
-            self.current_state.exit()
-        self.current_state = new_state
-        self.current_state.enter()
+        self.state = new_state
 
     def run(self):
-        from states.menuState import MenuState  
-        self.change_state(MenuState(self))
-        self.root.mainloop()
-
-if __name__ == "__main__":
-    game = Game()
-    game.run()
+        while self.running:
+            self.state.handle_events()
+            self.state.update()
+            self.state.draw()
+            self.clock.tick(self.FPS)
+        pygame.quit()
