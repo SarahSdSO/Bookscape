@@ -8,11 +8,24 @@ WORDLE:
 - 
 
 JOGO DA VELHA:
-- 
-- 
+- https://www.pygame.org/docs/
+- https://en.wikipedia.org/wiki/Minimax
+- https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning
+- https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-4-alpha-beta-pruning/
+- https://www.geeksforgeeks.org/finding-optimal-move-in-tic-tac-toe-using-minimax-algorithm-in-game-theory/
+- https://www.youtube.com/watch?v=trKjYdBASyQ 
+- https://inventwithpython.com/chapter10.html 
 
 FORCA:
-- 
+- https://realpython.com/python-hangman/ 
+- https://youtu.be/m4nEnsavl6w?si=opzYBHOiePNZktRT 
+- https://www.geeksforgeeks.org/hangman-game-python/
+- https://docs.python.org/3/tutorial/controlflow.html
+- https://docs.python.org/3/library/random.html
+- https://docs.python.org/3/tutorial/introduction.html#lists
+- https://www.pygame.org/docs/ref/time.html
+- https://www.pygame.org/docs/ref/draw.html
+- https://www.pygame.org/docs/ref/font.html
 
 BIBLIOTECAS NO GERAL:
 - 
