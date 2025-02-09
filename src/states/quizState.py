@@ -33,11 +33,11 @@ class QuizState(State):
                 self.check_answer(event.pos)
 
     def check_answer(self, mouse_pos):
-        button_radius = 30  # Mantemos o raio maior para melhorar a detecção
-        spacing = 85  # Ajustamos o espaçamento para corresponder ao desenho
+        button_radius = 30
+        spacing = 85  
 
         for i in range(len(self.options[self.current_question])):
-            y_position = 250 + i * spacing  # Define a posição do botão
+            y_position = 250 + i * spacing 
             button_center = (100, y_position)
 
             distance = ((mouse_pos[0] - button_center[0])**2 + (mouse_pos[1] - button_center[1])**2) ** 0.5
@@ -47,11 +47,12 @@ class QuizState(State):
                     self.time_left = 40 * self.game.FPS
                     if self.current_question == len(self.questions):
                         self.game.change_state(CrosswordsState(self.game))
+
                 else:
                     self.game.lives -= 1
                     if self.game.lives == 0:
                         self.game.change_state(GameOverState(self.game))
-                return  # Sai da função assim que um botão for detectado corretamente
+                return  
 
     def update(self):
         if self.time_left > 0:

@@ -30,6 +30,7 @@ class MenuState(State):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.game.running = False
+                
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 if self.start_button.collidepoint(event.pos):
                     self.game.change_state(StoryState(self.game))

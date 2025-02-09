@@ -1,6 +1,7 @@
 import pygame
 import random
 from states.state import State
+from states.wordleState import WordleState
 from states.gameOverState import GameOverState
 
 class TicTacToeState(State):
@@ -175,8 +176,7 @@ class TicTacToeState(State):
     def update(self):
         if self.game_over:
             if self.winner == self.player:
-                #self.game.change_state(WordleState(self.game))
-                self.game.change_state(GameOverState(self.game))
+                self.game.change_state(WordleState(self.game))
 
             elif self.winner == "tie":
                 self.game.change_state(TicTacToeState(self.game))

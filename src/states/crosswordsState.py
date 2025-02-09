@@ -83,6 +83,7 @@ class CrosswordsState(State):
         tempo_restante = int(self.tempo_limite - (time.time() - self.tempo_inicial))
         if tempo_restante <= 0:
             self.game.change_state(GameOverState(self.game))
+            
         if len(self.palavras_encontradas) == len(self.palavras):
             self.game.change_state(TicTacToeState(self.game))
 

@@ -28,5 +28,4 @@ FORCA:
 - https://www.pygame.org/docs/ref/font.html
 
 BIBLIOTECAS NO GERAL:
-- 
-- 
+- pygame.org/docs
