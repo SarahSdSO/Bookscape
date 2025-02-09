@@ -3,7 +3,7 @@ import time
 import random
 from states.state import State
 from states.gameOverState import GameOverState
-from states.winningState import WinningState
+from states.ticTacToeState import TicTacToeState
 
 class CrosswordsState(State):
     def __init__(self, game):
@@ -34,6 +34,7 @@ class CrosswordsState(State):
                 y = random.randint(0, self.GRID_SIZE - 1)
                 for i, letra in enumerate(palavra):
                     grade[y][x + i] = letra
+                    
             elif direcao == 'vertical':
                 x = random.randint(0, self.GRID_SIZE - 1)
                 y = random.randint(0, self.GRID_SIZE - len(palavra))
@@ -83,7 +84,7 @@ class CrosswordsState(State):
         if tempo_restante <= 0:
             self.game.change_state(GameOverState(self.game))
         if len(self.palavras_encontradas) == len(self.palavras):
-            self.game.change_state(WinningState(self.game))
+            self.game.change_state(TicTacToeState(self.game))
 
     def draw(self):
         self.game.screen.fill((50, 30, 30))
