@@ -5,7 +5,7 @@ CAÇA-PALAVRAS
 - 
 
 WORDLE:
-- 
+- https://www.youtube.com/watch?v=D8mqgW0DiKk&list=PLsFyHm8kJsx32EFcsJNt5sDI_nKsanRUu&index=18
 
 JOGO DA VELHA:
 - https://www.pygame.org/docs/
