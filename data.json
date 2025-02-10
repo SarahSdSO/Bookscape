@@ -1,41 +1,56 @@
 {
   "question": 
   [
-    "Q1. Quem é o autor de 'Dom Casmurro'?",
-    "Q2. Qual dessas obras foi escrita por J.R.R. Tolkien?",
-    "Q3. Qual é o primeiro livro da série 'Harry Potter'?",
-    "Q4. Em que cidade se passa a maior parte da história de 'O Primo Basílio'?",
-    "Q5. Qual dessas personagens pertence ao livro 'Orgulho e Preconceito'?",
-    "Q6. Quem escreveu 'Cem Anos de Solidão'?",
-    "Q7. Qual é o nome do detetive famoso criado por Arthur Conan Doyle?",
-    "Q8. Qual dessas obras pertence ao escritor brasileiro Jorge Amado?",
-    "Q9. Em 'O Pequeno Príncipe', qual é a profissão do narrador da história?",
-    "Q10. Qual dessas distopias foi escrita por George Orwell?"
+    "Q1. Qual é o apelido de August em 'Extraordinário'?",
+    "Q2. O que Stella e Will não podem fazer em 'A Cinco Passos de Você'?",
+    "Q3. Que elemento natural é marcante em 'O Morro dos Ventos Uivantes'?",
+    "Q4. Qual personagem de 'Orgulho e Preconceito' é mais sarcástico?",
+    "Q5. O que Anne mais gosta de fazer em 'Anne de Green Gables'?",
+    "Q6. Que criatura Alice encontra primeiro no País das Maravilhas?",
+    "Q7. Qual cor define os poderosos em 'A Rainha Vermelha'?",
+    "Q8. Em 'Renegados', Nova tem poderes ligados a quê?",
+    "Q9. Que objeto icônico Edward dá para Bella em 'Crepúsculo'?",
+    "Q10. Em que cidade Clarice Lispector nasceu?",
+    "Q11. Qual era o nome real de Fernando Pessoa?",
+    "Q12. Que sentimento levou Victor Frankenstein a criar sua criatura?",
+    "Q13. Em 'A Seleção', qual é o maior medo de America?",
+    "Q14. Quem conta a história de 'O Morro dos Ventos Uivantes'?",
+    "Q15. O que acontece se Alice tomar a poção mágica?"
   ],
   "answer": 
   [
     1,
-    3,
+    1,
+    1,
+    4,
+    1,
     2,
+    3,
+    1,
+    3,
     4,
     2,
     3,
     1,
-    4,
     2,
-    3
+    2
   ],
   "options": 
   [
-    ["Machado de Assis", "José de Alencar", "Graciliano Ramos", "Lima Barreto"],
-    ["O Pequeno Príncipe", "1984", "O Senhor dos Anéis", "Drácula"],
-    ["Harry Potter e a Câmara Secreta", "Harry Potter e a Pedra Filosofal", "Harry Potter e o Prisioneiro de Azkaban", "Harry Potter e o Cálice de Fogo"],
-    ["São Paulo", "Belo Horizonte", "Porto Alegre", "Lisboa"],
-    ["Humbert Humbert", "Elizabeth Bennet", "Capitão Ahab", "Anna Kariênina"],
-    ["José Saramago", "Clarice Lispector", "Gabriel García Márquez", "Fernando Pessoa"],
-    ["Sherlock Holmes", "Hercule Poirot", "Philip Marlowe", "Comissário Maigret"],
-    ["O Guarani", "Memórias Póstumas de Brás Cubas", "Senhora", "Capitães da Areia"],
-    ["Médico", "Aviador", "Professor", "Jornalista"],
-    ["Admirável Mundo Novo", "Fahrenheit 451", "1984", "Laranja Mecânica"]
+    ["Auggie", "Gus", "Tony", "Max"],
+    ["Tocar um no outro", "Conversar", "Sair do hospital", "Escrever cartas"],
+    ["Vento", "Neve", "Chuva", "Sol"],
+    ["Elizabeth Bennet", "Jane Bennet", "Charlotte Lucas", "Sr. Darcy"],
+    ["Ler e imaginar", "Pintar", "Cozinhar", "Correr"],
+    ["Gato de Cheshire", "Coelho Branco", "Chapeleiro", "Rainha Vermelha"],
+    ["Vermelho", "Azul", "Prata", "Dourado"],
+    ["Sono", "Fogo", "Água", "Morte"],
+    ["Pulseira", "Livro", "Chave", "Carro"],
+    ["Recife", "Lisboa", "Rio de Janeiro", "Varsóvia"],
+    ["Alberto", "Fernando", "Bernardo", "Ricardo"],
+    ["Vingança", "Orgulho", "Ambição", "Solidão"],
+    ["Perder sua família", "Ser princesa", "Ficar pobre", "Decepcionar Maxon"],
+    ["Sr. Lockwood", "Ellen Dean", "Catherine", "Heathcliff"],
+    ["Fica gigante", "Encolhe", "Ganha asas", "Vira invisível"]
   ]
 }

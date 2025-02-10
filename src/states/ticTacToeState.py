@@ -19,8 +19,8 @@ class TicTacToeState(State):
         self.background = pygame.transform.scale(self.background, (self.game.WIDTH, self.game.HEIGHT))
         self.paper_img = pygame.image.load("assets/backgrounds/paper.png")
         self.pen_img = pygame.image.load("assets/backgrounds/pen.png")
-        self.paper_img = pygame.transform.scale(self.paper_img, (self.SQUARE_SIZE, self.SQUARE_SIZE))
-        self.pen_img = pygame.transform.scale(self.pen_img, (self.SQUARE_SIZE, self.SQUARE_SIZE))
+        self.paper_img = pygame.transform.scale(self.paper_img, (self.SQUARE_SIZE * 0.9, self.SQUARE_SIZE * 0.9))
+        self.pen_img = pygame.transform.scale(self.pen_img, (self.SQUARE_SIZE * 0.9, self.SQUARE_SIZE * 0.9))
 
         self.game_area = pygame.Rect(
             (self.game.WIDTH - self.WIDTH) // 2,  
@@ -203,6 +203,6 @@ class TicTacToeState(State):
             self.game.screen.blit(text, (self.game.WIDTH // 2 - text.get_width() // 2, self.game.HEIGHT // 2 - text.get_height() // 2))
 
         for i in range(self.game.lives):
-            self.game.screen.blit(self.game.heart_image, (self.game.WIDTH - (i + 1) * 60 - 10, 20))
+            self.game.screen.blit(self.game.heart_image, (self.game.WIDTH - (i + 1) * 45 - 50, 60))
 
         pygame.display.flip()

@@ -1,6 +1,5 @@
 import pygame
 from states.menuState import MenuState
-from states.ticTacToeState import TicTacToeState
 
 class Game:
     def __init__(self):
