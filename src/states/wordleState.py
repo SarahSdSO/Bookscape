@@ -71,7 +71,6 @@ class WordleState(State):
                             pygame.draw.rect(self.game.screen, self.green, (self.board_x + col * 73 + 74, self.board_y + row * 76 + 60, 60, 60), 0, 8)
                             
                         elif self.rowsBoard[row][col] in self.secretWord:
-
                             pygame.draw.rect(self.game.screen, self.yellow, (self.board_x + col * 73 + 74, self.board_y + row * 76 + 60, 60, 60), 0, 8)
                         else:
                             pygame.draw.rect(self.game.screen, self.gray, (self.board_x + col * 73 + 74, self.board_y + row * 76 + 60, 60, 60), 0, 8)
@@ -91,6 +90,7 @@ class WordleState(State):
                     if guess == self.secretWord:
                         self.gameOver = True
                         self.victory_time = pygame.time.get_ticks()  
+                        self.game.change_state(HangmanState(self.game))  
                     else:
                         self.roundGame += 1
                         self.lettersEntered = 0

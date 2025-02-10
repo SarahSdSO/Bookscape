@@ -26,33 +26,28 @@ class CrosswordsState(State):
         self.selecao = []
 
     def criar_grade(self):
-    # Inicializa a grade com espaços vazios
         grade = [[' ' for _ in range(self.GRID_SIZE)] for _ in range(self.GRID_SIZE)]
         
         for palavra in self.palavras:
             direcao = random.choice(['horizontal', 'vertical'])
             if direcao == 'horizontal':
-                # Tenta encontrar uma posição válida para a palavra na horizontal
-                for _ in range(100):  # Tenta 100 vezes encontrar uma posição válida
+                for _ in range(100):  
                     x = random.randint(0, self.GRID_SIZE - len(palavra))
                     y = random.randint(0, self.GRID_SIZE - 1)
-                    # Verifica se a posição está livre para a palavra
+
                     if all(grade[y][x + i] == ' ' for i in range(len(palavra))):
                         for i, letra in enumerate(palavra):
                             grade[y][x + i] = letra
                         break
             elif direcao == 'vertical':
-                # Tenta encontrar uma posição válida para a palavra na vertical
-                for _ in range(100):  # Tenta 100 vezes encontrar uma posição válida
+                for _ in range(100): 
                     x = random.randint(0, self.GRID_SIZE - 1)
                     y = random.randint(0, self.GRID_SIZE - len(palavra))
-                    # Verifica se a posição está livre para a palavra
                     if all(grade[y + i][x] == ' ' for i in range(len(palavra))):
                         for i, letra in enumerate(palavra):
                             grade[y + i][x] = letra
                         break
         
-        # Preenche o restante da grade com letras aleatórias
         for y in range(self.GRID_SIZE):
             for x in range(self.GRID_SIZE):
                 if grade[y][x] == ' ':
