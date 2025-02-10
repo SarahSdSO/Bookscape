@@ -33,12 +33,12 @@ class QuizState(State):
                 self.check_answer(event.pos)
 
     def check_answer(self, mouse_pos):
-        button_radius = 30
-        spacing = 85  
+        button_radius = 30  # Mantemos o raio maior para melhorar a detecção
+        spacing = 65  # Ajustamos o espaçamento para corresponder ao desenho
 
         for i in range(len(self.options[self.current_question])):
-            y_position = 250 + i * spacing 
-            button_center = (100, y_position)
+            y_position = 280 + i * spacing  # Define a posição do botão
+            button_center = (70, y_position)
 
             distance = ((mouse_pos[0] - button_center[0])**2 + (mouse_pos[1] - button_center[1])**2) ** 0.5
             if distance <= button_radius:
@@ -69,26 +69,26 @@ class QuizState(State):
 
     def draw_question(self):
         question_text = self.font.render(self.questions[self.current_question], True, (255, 255, 255))
-        self.game.screen.blit(question_text, (self.game.WIDTH // 2 - question_text.get_width() // 2, 50))
+        self.game.screen.blit(question_text, ((50, 190)))
 
     def draw_timer(self):
         progress = self.time_left / (40 * self.game.FPS)
-        pygame.draw.rect(self.game.screen, (115, 42, 39), (self.game.WIDTH // 2 - 300, 120, 600, 20), border_radius=10)
-        pygame.draw.rect(self.game.screen, (87, 31, 28), (self.game.WIDTH // 2 - 300, 120, int(600 * progress), 20), border_radius=10)
+        pygame.draw.rect(self.game.screen, (115, 42, 39), (self.game.WIDTH // 2 - 400, 115, 800, 30), border_radius=20)
+        pygame.draw.rect(self.game.screen, (87, 31, 28), (self.game.WIDTH // 2 - 400, 115, int(800 * progress), 30), border_radius=20)
 
     def draw_lives(self):
         for i in range(self.game.lives):
-            self.game.screen.blit(self.game.heart_image, (self.game.WIDTH - (i + 1) * 60 - 10, 20))
+            self.game.screen.blit(self.game.heart_image, (self.game.WIDTH - (i + 1) * 60 - 50, 62))
 
     def draw_options(self):
         button_radius = 22
-        spacing = 85
+        spacing = 65
 
         for i, option in enumerate(self.options[self.current_question]):
-            y_position = 250 + i * spacing
-            pygame.draw.circle(self.game.screen, (255, 255, 255), (100, y_position), button_radius, 2)
+            y_position = 280 + i * spacing
+            pygame.draw.circle(self.game.screen, (255, 255, 255), (70, y_position), button_radius, 1)
             option_text = self.font.render(option, True, (255, 255, 255))
-            self.game.screen.blit(option_text, (140, y_position - option_text.get_height() // 2))
+            self.game.screen.blit(option_text, (110, y_position - option_text.get_height() // 2))
 
     def draw(self):
         self.game.screen.fill((50, 30, 30))
