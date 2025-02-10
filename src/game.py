@@ -1,5 +1,6 @@
 import pygame
 from states.menuState import MenuState
+from states.crosswordsState import CrosswordsState
 
 class Game:
     def __init__(self):
@@ -20,7 +21,7 @@ class Game:
         self.icon = pygame.image.load("assets/icons/gameIcon.png")
         pygame.display.set_icon(self.icon)
         
-        self.state = MenuState(self)
+        self.state = CrosswordsState(self)
 
     def change_state(self, new_state):
         self.state = new_state
