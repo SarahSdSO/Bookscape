@@ -2,7 +2,13 @@ QUIZ:
 - https://www.geeksforgeeks.org/python-mcq-quiz-game-using-tkinter
 
 CAÇA-PALAVRAS
-- 
+- https://realpython.com/python-lists-tuples/
+- https://docs.python.org/3/library/time.html
+- https://docs.python.org/3/library/random.html
+- https://github.com/vitordsbatista/Caca-palavras
+- https://medium.com/@msgold/creating-a-word-search-puzzle-b499533e938
+- https://www.tutorialspoint.com/word-search-in-python
+- https://zhaqenl.github.io/en/wordsearch/
 
 WORDLE:
 - https://www.youtube.com/watch?v=D8mqgW0DiKk&list=PLsFyHm8kJsx32EFcsJNt5sDI_nKsanRUu&index=18
