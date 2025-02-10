@@ -13,7 +13,7 @@ class CrosswordsState(State):
         self.background = pygame.image.load("assets/backgrounds/background.png")
         self.background = pygame.transform.scale(self.background, (self.WIDTH, self.HEIGHT))
 
-        self.palavras = ["livro", "estante", "leitura", "biblioteca", "autor", "editora", "pagina", "capitulo", "texto", "pesquisa"]
+        self.palavras = ["livro", "estante", "biblioteca", "texto"]
         self.GRID_SIZE = 10
         self.CELL_SIZE = 45
 
@@ -26,20 +26,38 @@ class CrosswordsState(State):
         self.selecao = []
 
     def criar_grade(self):
-        grade = [[random.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(self.GRID_SIZE)] for _ in range(self.GRID_SIZE)]
+    # Inicializa a grade com espaços vazios
+        grade = [[' ' for _ in range(self.GRID_SIZE)] for _ in range(self.GRID_SIZE)]
+        
         for palavra in self.palavras:
             direcao = random.choice(['horizontal', 'vertical'])
             if direcao == 'horizontal':
-                x = random.randint(0, self.GRID_SIZE - len(palavra))
-                y = random.randint(0, self.GRID_SIZE - 1)
-                for i, letra in enumerate(palavra):
-                    grade[y][x + i] = letra
-                    
+                # Tenta encontrar uma posição válida para a palavra na horizontal
+                for _ in range(100):  # Tenta 100 vezes encontrar uma posição válida
+                    x = random.randint(0, self.GRID_SIZE - len(palavra))
+                    y = random.randint(0, self.GRID_SIZE - 1)
+                    # Verifica se a posição está livre para a palavra
+                    if all(grade[y][x + i] == ' ' for i in range(len(palavra))):
+                        for i, letra in enumerate(palavra):
+                            grade[y][x + i] = letra
+                        break
             elif direcao == 'vertical':
-                x = random.randint(0, self.GRID_SIZE - 1)
-                y = random.randint(0, self.GRID_SIZE - len(palavra))
-                for i, letra in enumerate(palavra):
-                    grade[y + i][x] = letra
+                # Tenta encontrar uma posição válida para a palavra na vertical
+                for _ in range(100):  # Tenta 100 vezes encontrar uma posição válida
+                    x = random.randint(0, self.GRID_SIZE - 1)
+                    y = random.randint(0, self.GRID_SIZE - len(palavra))
+                    # Verifica se a posição está livre para a palavra
+                    if all(grade[y + i][x] == ' ' for i in range(len(palavra))):
+                        for i, letra in enumerate(palavra):
+                            grade[y + i][x] = letra
+                        break
+        
+        # Preenche o restante da grade com letras aleatórias
+        for y in range(self.GRID_SIZE):
+            for x in range(self.GRID_SIZE):
+                if grade[y][x] == ' ':
+                    grade[y][x] = random.choice('abcdefghijklmnopqrstuvwxyz').lower()
+        
         return grade
 
     def handle_events(self):
@@ -109,11 +127,15 @@ class CrosswordsState(State):
 
     def desenhar_hud(self):
         tempo_restante = int(self.tempo_limite - (time.time() - self.tempo_inicial))
-        pygame.draw.rect(self.game.screen, (115, 42, 39), (50, 50, 700, 20), border_radius=10)
-        pygame.draw.rect(self.game.screen, (87, 31, 28), (50, 50, int(700 * (tempo_restante / self.tempo_limite)), 20), border_radius=10)
+        pygame.draw.rect(self.game.screen, (115, 42, 39), (50, 60, 700, 30), border_radius=10)
+        pygame.draw.rect(self.game.screen, (87, 31, 28), (50, 60, int(700 * (tempo_restante / self.tempo_limite)), 30), border_radius=10)
 
         for i in range(self.game.lives):
-            self.game.screen.blit(self.game.heart_image, (self.game.WIDTH - (i + 1) * 60 - 10, 20))
+            self.game.screen.blit(self.game.heart_image, (self.game.WIDTH - (i + 1) * 60 - 50, 60))
 
-        text = self.font.render(f"Palavras encontradas: {', '.join(self.palavras_encontradas)}", True, (255, 255, 255))
-        self.game.screen.blit(text, (50, 10))
+        y_offset = 10  
+        textPalavras = self.font.render(f"Palavras encontradas: ", True, (255, 255, 255))
+        self.game.screen.blit(textPalavras, (570, 125))
+        for i, palavra in enumerate(self.palavras_encontradas):
+            text = self.font.render(f"- {palavra}", True, (255, 255, 255))
+            self.game.screen.blit(text, (570, y_offset + i * 80 + 160))
