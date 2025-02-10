@@ -1,6 +1,8 @@
 import pygame
 from states.menuState import MenuState
 from states.wordleState import WordleState
+from states.winningState import WinningState
+from states.gameOverState import GameOverState
 
 class Game:
     def __init__(self):
@@ -21,7 +23,7 @@ class Game:
         self.icon = pygame.image.load("assets/icons/gameIcon.png")
         pygame.display.set_icon(self.icon)
         
-        self.state = WordleState(self)
+        self.state = MenuState(self)
 
     def change_state(self, new_state):
         self.state = new_state

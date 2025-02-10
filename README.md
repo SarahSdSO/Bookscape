@@ -1,4 +1,3 @@
-
 # **Bookscape**
 
 ## 🎥 Demonstração
@@ -29,7 +28,7 @@ O jogador se encontra preso em uma antiga biblioteca misteriosa. Entre prateleir
 - Mini-história para ambientação
 - Perguntas do tipo quiz
 - Desafios interativos como jogo da velha, forca e adivinhação de palavras
-- Três vidas por jogador
+- 3 vidas
 - Cronômetro para aumentar a dificuldade
 
 ## 🚀 Como Jogar
