@@ -1,8 +1,6 @@
 import pygame
 from states.menuState import MenuState
-from states.wordleState import WordleState
-from states.winningState import WinningState
-from states.gameOverState import GameOverState
+from states.ticTacToeState import TicTacToeState
 
 class Game:
     def __init__(self):
