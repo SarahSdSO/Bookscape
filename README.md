@@ -8,9 +8,7 @@
 
 Este projeto foi desenvolvido como parte da disciplina **Linguagens e Técnicas de Programação II**
 
-O projeto **"Bookscape"** é um jogo do tipo **Escape Room Virtual**. Sua ambientação é uma **biblioteca**, tema escolhido para trazer uma experiência aconchegante, criando um espaço imersivo para os jogadores resolverem desafios intelectuais. Sendo assim, ele irá conter diversas perguntas, puzzles e charadas que o jogador deve resolver para ganhar o jogo.
-
-O desenvolvimento do projeto permitirá aprimorar habilidades técnicas como programação em **Python**, uso de bibliotecas gráficas, trabalho em equipe e o processo de planejamento e a execução de um projeto com técnicas estudadas em sala de aula, mostrando-se assim relevante para o aprendizado.
+**"Bookscape"** é um jogo do tipo **Escape Room Virtual**. Sua ambientação é uma **biblioteca**, tema escolhido para trazer uma experiência aconchegante, criando um espaço imersivo para os jogadores resolverem desafios intelectuais. 
 
 ## 📖 História
 
