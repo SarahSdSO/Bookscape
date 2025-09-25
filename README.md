@@ -38,3 +38,4 @@ O jogador se encontra preso em uma antiga biblioteca misteriosa. Entre prateleir
 5. Caso perca, tente novamente para escapar da biblioteca.
 
 **Prepare-se para o desafio e escape da biblioteca!**
+
